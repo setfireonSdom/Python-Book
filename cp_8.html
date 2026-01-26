@@ -261,6 +261,7 @@ window.Quarto = {
   <li><a href="#什么是二分查找它与线性搜索有什么不同" id="toc-什么是二分查找它与线性搜索有什么不同" class="nav-link" data-scroll-target="#什么是二分查找它与线性搜索有什么不同"><span class="header-section-number">9.1.1</span> 什么是二分查找？它与线性搜索有什么不同？</a></li>
   <li><a href="#什么是分治divide-and-conquer思想归并排序merge-sort-是如何工作的" id="toc-什么是分治divide-and-conquer思想归并排序merge-sort-是如何工作的" class="nav-link" data-scroll-target="#什么是分治divide-and-conquer思想归并排序merge-sort-是如何工作的"><span class="header-section-number">9.1.2</span> 什么是分治（Divide and Conquer）思想？归并排序（Merge Sort ）是如何工作的？</a></li>
   </ul></li>
+  <li><a href="#汉诺塔问题tower-of-hanoi" id="toc-汉诺塔问题tower-of-hanoi" class="nav-link" data-scroll-target="#汉诺塔问题tower-of-hanoi"><span class="header-section-number">9.2</span> 汉诺塔问题（Tower of Hanoi）</a></li>
   </ul>
 </nav>
     </div>
@@ -400,9 +401,99 @@ window.Quarto = {
 </figure>
 </div>
 <p><img src="images/clipboard-2712112409.png" class="img-fluid"></p>
-
-
 </section>
+</section>
+<section id="汉诺塔问题tower-of-hanoi" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="汉诺塔问题tower-of-hanoi"><span class="header-section-number">9.2</span> 汉诺塔问题（Tower of Hanoi）</h2>
+<p>这个问题叫 <strong>汉诺塔问题</strong>，但名字不重要。你可以把它理解成一个<strong>极其简单但规则很严格的搬东西游戏</strong>。</p>
+<p>游戏设定只有三条规则，你有什么？三根柱子。</p>
+<ol type="1">
+<li>左边一根</li>
+<li>中间一根</li>
+<li>右边一根</li>
+</ol>
+<p>一些圆盘，大小不一样，中间有孔，可以套在柱子上。而且是，大的在下面小的在上面。 <img src="images/clipboard-3745104800.gif" class="img-fluid"></p>
+<p>你要做什么？ 把所有盘子，从左边那根柱子，搬到右边那根柱子</p>
+<p>但有三条非常严格的规则：</p>
+<ol type="1">
+<li>一次只能搬一个盘子</li>
+<li>只能从“最上面”拿盘子</li>
+<li>小盘子不能放在大盘子下面</li>
+</ol>
+<p>具体怎么实现呢？</p>
+<p>我们把规则写得非常机械：</p>
+<p><strong>规则 1</strong>：最小情况（机器的“停下来条件”）</p>
+<p>如果只剩 1 个盘子：从当前柱子，直接搬到目标柱子。</p>
+<p>完成。</p>
+<p><strong>规则 2</strong>：一般情况（n 个盘子）</p>
+<p>如果有 n 个盘子：</p>
+<ol type="1">
+<li>先把 上面的 n−1 个，搬到中间柱</li>
+<li>再把 最大的那个，搬到目标柱</li>
+<li>最后把 那 n−1 个，从中间柱搬到目标柱</li>
+</ol>
+<p>第 1 步和第 3 步，做的事情和“整体问题一模一样”，只是盘子少了。</p>
+<p>你可以把算法想成一个极其死板的工人，每次接到任务：“搬 n 个盘子”，它只会检查一件事：是不是 1 个？是 → 直接搬；不是 → 按三步拆任务。它不会思考、不创新、不怀疑，只会照规则做。</p>
+<p>用最直白的“伪代码”表示</p>
+<pre><code>搬盘子(n, 起点, 中转, 终点):
+
+    如果 n == 1:
+        把盘子从 起点 搬到 终点
+        停止
+
+    否则:
+        搬盘子(n-1, 起点, 终点, 中转)
+        把最大的盘子从 起点 搬到 终点
+        搬盘子(n-1, 中转, 起点, 终点)</code></pre>
+<p>实际代码：</p>
+<pre><code>def hanoi_solver(n):
+    # Initialize the three rods
+    # rod1 starts with all disks [n, n-1, ..., 1] (largest at bottom, smallest on top)
+    # But since we're representing as lists where the rightmost is top,
+    # we store as [n, n-1, ..., 1] so that pop() gives us the top disk
+    rod1 = list(range(n, 0, -1))  # [n, n-1, ..., 1]
+    rod2 = []
+    rod3 = []
+    
+    # Store all states including initial state
+    states = []
+    
+    def record_state():
+        # Create string representation of current state
+        r1_str = str(rod1)
+        r2_str = str(rod2)
+        r3_str = str(rod3)
+        states.append(f"{r1_str} {r2_str} {r3_str}")
+    
+    def move_disk(source, dest):
+        # Move top disk from source to dest
+        disk = source.pop()
+        dest.append(disk)
+    
+    def hanoi_recursive(disks, source, auxiliary, target):
+        if disks == 1:
+            # Base case: move one disk
+            move_disk(source, target)
+            record_state()
+        else:
+            # Move n-1 disks from source to auxiliary using target as helper
+            hanoi_recursive(disks - 1, source, target, auxiliary)
+            # Move the largest disk from source to target
+            move_disk(source, target)
+            record_state()
+            # Move n-1 disks from auxiliary to target using source as helper
+            hanoi_recursive(disks - 1, auxiliary, source, target)
+    
+    # Record initial state
+    record_state()
+    
+    # Solve the puzzle if there are disks to move
+    if n &gt; 0:
+        hanoi_recursive(n, rod1, rod2, rod3)
+    
+    return "\n".join(states)</code></pre>
+
+
 </section>
 
 </main> <!-- /main -->
