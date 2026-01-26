@@ -233,6 +233,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#什么是方法methods和属性attributes它们是如何起作用的" id="toc-什么是方法methods和属性attributes它们是如何起作用的" class="nav-link" data-scroll-target="#什么是方法methods和属性attributes它们是如何起作用的"><span class="header-section-number">6.1.2</span> 什么是方法（Methods）和属性（Attributes）？它们是如何起作用的？</a></li>
   <li><a href="#什么是特殊方法它们的用途是什么" id="toc-什么是特殊方法它们的用途是什么" class="nav-link" data-scroll-target="#什么是特殊方法它们的用途是什么"><span class="header-section-number">6.1.3</span> 什么是特殊方法？它们的用途是什么？</a></li>
   <li><a href="#如何动态地处理对象属性" id="toc-如何动态地处理对象属性" class="nav-link" data-scroll-target="#如何动态地处理对象属性"><span class="header-section-number">6.1.4</span> 如何动态地处理对象属性？</a></li>
+  <li><a href="#特殊方法参考表" id="toc-特殊方法参考表" class="nav-link" data-scroll-target="#特殊方法参考表"><span class="header-section-number">6.1.5</span> 特殊方法参考表</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -679,6 +680,163 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Final attributes remaining:</span></span>
 <span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a><span class="co">#  - user_id: 101</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>这就是如何动态处理属性的方法！</p>
+</section>
+<section id="特殊方法参考表" class="level3" data-number="6.1.5">
+<h3 data-number="6.1.5" class="anchored" data-anchor-id="特殊方法参考表"><span class="header-section-number">6.1.5</span> 特殊方法参考表</h3>
+<pre><code># 1. 对象创建与销毁
+__new__(cls, ...)
+__init__(self, ...)
+__del__(self)
+
+# 2. 对象表示与状态
+__repr__(self)
+__str__(self)
+__bytes__(self)
+__format__(self, format_spec)
+__hash__(self)
+__bool__(self)
+
+# 3. 比较运算
+__eq__(self, other)
+__ne__(self, other)
+__lt__(self, other)
+__le__(self, other)
+__gt__(self, other)
+__ge__(self, other)
+
+# 4. 数值运算
+# 4.1 一元
+__neg__(self)
+__pos__(self)
+__abs__(self)
+__invert__(self)
+
+# 4.2 二元
+__add__(self, other)
+__sub__(self, other)
+__mul__(self, other)
+__matmul__(self, other)
+__truediv__(self, other)
+__floordiv__(self, other)
+__mod__(self, other)
+__divmod__(self, other)
+__pow__(self, other[, modulo])
+__lshift__(self, other)
+__rshift__(self, other)
+__and__(self, other)
+__xor__(self, other)
+__or__(self, other)
+
+# 4.3 反向
+__radd__(self, other)
+__rsub__(self, other)
+__rmul__(self, other)
+__rmatmul__(self, other)
+__rtruediv__(self, other)
+__rfloordiv__(self, other)
+__rmod__(self, other)
+__rdivmod__(self, other)
+__rpow__(self, other)
+__rlshift__(self, other)
+__rrshift__(self, other)
+__rand__(self, other)
+__rxor__(self, other)
+__ror__(self, other)
+
+# 4.4 增量
+__iadd__(self, other)
+__isub__(self, other)
+__imul__(self, other)
+__imatmul__(self, other)
+__itruediv__(self, other)
+__ifloordiv__(self, other)
+__imod__(self, other)
+__ipow__(self, other)
+__ilshift__(self, other)
+__irshift__(self, other)
+__iand__(self, other)
+__ixor__(self, other)
+__ior__(self, other)
+
+# 5. 类型转换
+__int__(self)
+__float__(self)
+__complex__(self)
+__index__(self)
+__round__(self[, n])
+__trunc__(self)
+__floor__(self)
+__ceil__(self)
+
+# 6. 容器协议
+__len__(self)
+__getitem__(self, key)
+__setitem__(self, key, value)
+__delitem__(self, key)
+__contains__(self, item)
+
+# 6.1 迭代
+__iter__(self)
+__next__(self)
+__reversed__(self)
+
+# 7. 上下文管理
+__enter__(self)
+__exit__(self, exc_type, exc, tb)
+
+# 7.1 异步上下文
+__aenter__(self)
+__aexit__(self, exc_type, exc, tb)
+
+# 8. 描述符
+__get__(self, instance, owner)
+__set__(self, instance, value)
+__delete__(self, instance)
+
+# 9. 属性访问控制
+__getattr__(self, name)
+__getattribute__(self, name)
+__setattr__(self, name, value)
+__delattr__(self, name)
+__dir__(self)
+
+# 10. 可调用对象
+__call__(self, *args, **kwargs)
+
+# 11. 拷贝
+__copy__(self)
+__deepcopy__(self, memo)
+
+# 12. 序列化 / pickle
+__getstate__(self)
+__setstate__(self, state)
+__reduce__(self)
+__reduce_ex__(self, protocol)
+
+# 13. 内存
+__sizeof__(self)
+
+# 14. 异步协议
+__await__(self)
+__aiter__(self)
+__anext__(self)
+
+# 15. 元类 / 类钩子
+__init_subclass__(cls)
+__class_getitem__(cls, item)
+__prepare__(metacls, name, bases, **kwds)
+
+# 16. 模式匹配（Python 3.10+）
+__match_args__
+
+# 17. 魔法属性
+__dict__
+__class__
+__bases__
+__name__
+__qualname__
+__module__
+__doc__</code></pre>
 
 
 </section>
