@@ -107,6 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -235,6 +236,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#栈和队列是如何工作的" id="toc-栈和队列是如何工作的" class="nav-link" data-scroll-target="#栈和队列是如何工作的"><span class="header-section-number">8.1.4</span> 栈和队列是如何工作的?</a></li>
   <li><a href="#单向链表是如何工作的它与双向链表有什么不同" id="toc-单向链表是如何工作的它与双向链表有什么不同" class="nav-link" data-scroll-target="#单向链表是如何工作的它与双向链表有什么不同"><span class="header-section-number">8.1.5</span> 单向链表是如何工作的？它与双向链表有什么不同？</a></li>
   <li><a href="#映射maps哈希映射hash-maps和集合是如何工作的" id="toc-映射maps哈希映射hash-maps和集合是如何工作的" class="nav-link" data-scroll-target="#映射maps哈希映射hash-maps和集合是如何工作的"><span class="header-section-number">8.1.6</span> 映射（Maps）、哈希映射（Hash Maps）和集合是如何工作的？</a></li>
+  </ul></li>
+  <li><a href="#练习" id="toc-练习" class="nav-link" data-scroll-target="#练习"><span class="header-section-number">8.2</span> 练习</a>
+  <ul class="collapse">
+  <li><a href="#实现一个hash-table" id="toc-实现一个hash-table" class="nav-link" data-scroll-target="#实现一个hash-table"><span class="header-section-number">8.2.1</span> 实现一个Hash Table</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -666,6 +671,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/clipboard-1447690320.png" class="img-fluid"></p>
 <p><img src="images/clipboard-2438492546.png" class="img-fluid"></p>
 <p><img src="images/clipboard-723737273.png" class="img-fluid"></p>
+</section>
+</section>
+<section id="练习" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="练习"><span class="header-section-number">8.2</span> 练习</h2>
+<section id="实现一个hash-table" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="实现一个hash-table"><span class="header-section-number">8.2.1</span> 实现一个Hash Table</h3>
+<p>1 定义一个名为HashTable的类，它有一个collection属性，collection值初始化为空字典。</p>
+<p>2 HashTable类应该有四个方法：<code>hash</code>, <code>add</code>, <code>remove</code>, 和 <code>lookup</code>.</p>
+<p>3 hash方法，接受一个字符串，返回该字符串对应的hash值，该值通过<strong>将字符串中每个字符的 Unicode（ASCII）码值相加</strong>计算得到。可以使用 <code>ord</code> 函数来完成这一计算。</p>
+<p>4 add方法，接受key，value作为参数，key用来计算hash值，value是要存储的值。如果多个键产生了相同的哈希值，它们对应的键值对应当<strong>存储在同一个哈希值下已有的嵌套字典中</strong>。</p>
+<p>5 remove方法，接受key作为参数用于计算hash，判断它是否在collection里面，移除相应的key-value对，如果key不存在，不要报错也不要移除任何内容。</p>
+<p>6 lookup方法，接受key作为参数，计算key的hash，返回相应的value。如果key不存在，则返回None。</p>
 
 
 </section>

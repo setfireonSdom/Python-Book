@@ -558,5 +558,15 @@
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>算法</span>"
     ]
+  },
+  {
+    "objectID": "cp_7.html#练习",
+    "href": "cp_7.html#练习",
+    "title": "8  线性数据结构",
+    "section": "8.2 练习",
+    "text": "8.2 练习\n\n8.2.1 实现一个Hash Table\n1 定义一个名为HashTable的类，它有一个collection属性，collection值初始化为空字典。\n2 HashTable类应该有四个方法：hash, add, remove, 和 lookup.\n3 hash方法，接受一个字符串，返回该字符串对应的hash值，该值通过将字符串中每个字符的 Unicode（ASCII）码值相加计算得到。可以使用 ord 函数来完成这一计算。\n4 add方法，接受key，value作为参数，key用来计算hash值，value是要存储的值。如果多个键产生了相同的哈希值，它们对应的键值对应当存储在同一个哈希值下已有的嵌套字典中。\n5 remove方法，接受key作为参数用于计算hash，判断它是否在collection里面，移除相应的key-value对，如果key不存在，不要报错也不要移除任何内容。\n6 lookup方法，接受key作为参数，计算key的hash，返回相应的value。如果key不存在，则返回None。",
+    "crumbs": [
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>线性数据结构</span>"
+    ]
   }
 ]
