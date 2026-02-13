@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-27c261d06b905028a18691de25d09dde.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-5ea8f22911a6df30576a2a25a24cdd7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -107,6 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -223,7 +224,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="2">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
@@ -787,7 +788,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>languages <span class="op">=</span> [<span class="st">'Spanish'</span>, <span class="st">'English'</span>, <span class="st">'Russian'</span>, <span class="st">'Chinese'</span>]</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">enumerate</span>(languages))</span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="co"># [(0, 'Spanish'), (1, 'English'), (2, 'Russian'), (3, 'Chinese')]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>枚举对象（现在是一个列表）中的每个条目都是一个元组，其中包含一个计数器（count），后面跟着从传递给 <code>enumerate()</code> 函数的可迭代对象中获取的值。</p>
 <p>现在，让我们重构前面的例子，使用 <code>enumerate()</code> 函数：</p>
 <p><strong>示例代码</strong></p>
@@ -821,7 +822,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>ids <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
 <span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(<span class="bu">zip</span>(developers, ids))</span>
-<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a><span class="co"># [('Naomi', 1), ('Dario', 2), ('Jessica', 3), ('Tom', 4)]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>以下是一个在 <code>for</code> 循环中使用 <code>zip()</code> 函数遍历开发者和 ID 的例子：</p>
 <p><strong>示例代码</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>developers <span class="op">=</span> [<span class="st">'Naomi'</span>, <span class="st">'Dario'</span>, <span class="st">'Jessica'</span>, <span class="st">'Tom'</span>]</span>
@@ -868,7 +869,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>在这个例子中，我们有一个数字列表，并想要创建一个新列表，其中包含指示哪些数字是偶数或奇数的元组。在列表推导式的第一部分，我们使用一个 if 语句来检查数字是否能被 2 整除。如果是，那么结果就是一个包含该数字后跟单词 ‘Even’ 的元组。否则，结果就是一个包含该数字后跟单词 ‘Odd’ 的元组。</p>
 <p>以下是结果打印在控制台中的样子：</p>
 <p><strong>示例代码</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>[(<span class="dv">1</span>, <span class="st">'Odd'</span>), (<span class="dv">2</span>, <span class="st">'Even'</span>), (<span class="dv">3</span>, <span class="st">'Odd'</span>), (<span class="dv">4</span>, <span class="st">'Even'</span>), (<span class="dv">5</span>, <span class="st">'Odd'</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>从现有可迭代对象创建列表的另一种方法是 <code>filter()</code> 函数。以下是创建一个仅包含超过四个字符的单词的新列表的例子：</p>
 <p><strong>示例代码</strong></p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb89"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>words <span class="op">=</span> [<span class="st">'tree'</span>, <span class="st">'sky'</span>, <span class="st">'mountain'</span>, <span class="st">'river'</span>, <span class="st">'cloud'</span>, <span class="st">'sun'</span>]</span>
